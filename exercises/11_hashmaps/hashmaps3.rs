@@ -15,6 +15,7 @@
 // Execute `rustlings hint hashmaps3` or use the `hint` watch subcommand for a
 // hint.
 
+//! Ce programme construit une table des scores à partir des résultats de matchs. Il utilise une HashMap pour associer le nom d'une équipe à sa structure Team, contenant le nombre de buts marqués et encaissés.
 
 use std::collections::HashMap;
 
@@ -24,6 +25,10 @@ struct Team {
     goals_conceded: u8,
 }
 
+/// Construit une table des scores à partir des résultats de matchs.
+/// # Retour
+///
+/// Une HashMap associant le nom d'une équipe à sa structure Team.
 fn build_scores_table(results: String) -> HashMap<String, Team> {
     let mut scores: HashMap<String, Team> = HashMap::new();
 
