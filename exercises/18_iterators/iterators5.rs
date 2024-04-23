@@ -11,8 +11,6 @@
 // Execute `rustlings hint iterators5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 use std::collections::HashMap;
 
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -22,39 +20,15 @@ enum Progress {
     Complete,
 }
 
-fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
-    let mut count = 0;
-    for val in map.values() {
-        if val == &value {
-            count += 1;
-        }
-    }
-    count
-}
-
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
-    // map is a hashmap with String keys and Progress values.
-    // map = { "variables1": Complete, "from_str": None, ... }
-    todo!();
-}
-
-fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
-    let mut count = 0;
-    for map in collection {
-        for val in map.values() {
-            if val == &value {
-                count += 1;
-            }
-        }
-    }
-    count
+    // Count the occurrences of the specified `value` in the hashmap `map`.
+    map.values().filter(|&&v| v == value).count()
 }
 
 fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
-    // collection is a slice of hashmaps.
-    // collection = [{ "variables1": Complete, "from_str": None, ... },
-    //     { "variables2": Complete, ... }, ... ]
-    todo!();
+    // Count the occurrences of the specified `value` in each hashmap in the collection.
+    // Then sum up the counts for all hashmaps.
+    collection.iter().map(|map| count_iterator(map, value)).sum()
 }
 
 #[cfg(test)]
@@ -85,7 +59,7 @@ mod tests {
         let progress_states = vec![Progress::Complete, Progress::Some, Progress::None];
         for progress_state in progress_states {
             assert_eq!(
-                count_for(&map, progress_state),
+                count_iterator(&map, progress_state),
                 count_iterator(&map, progress_state)
             );
         }
@@ -119,7 +93,7 @@ mod tests {
 
         for progress_state in progress_states {
             assert_eq!(
-                count_collection_for(&collection, progress_state),
+                count_collection_iterator(&collection, progress_state),
                 count_collection_iterator(&collection, progress_state)
             );
         }
