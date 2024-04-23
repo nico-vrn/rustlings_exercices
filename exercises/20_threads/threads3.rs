@@ -3,7 +3,6 @@
 // Execute `rustlings hint threads3` or use the `hint` watch subcommand for a
 // hint.
 
-
 use std::sync::mpsc;
 use std::sync::{Arc, Mutex};
 use std::thread;
@@ -30,7 +29,7 @@ impl Queue {
 }
 
 /// Envoie les éléments de la `Queue` dans un canal en utilisant deux threads.
-fn send_tx(q: Queue, tx: Arc<Mutex<mpsc::Sender<u32>>>) -> () {
+fn send_tx(q: Queue, tx: Arc<Mutex<mpsc::Sender<u32>>>) {
     let tx_clone = Arc::clone(&tx);
     let first_half_thread = thread::spawn(move || {
         for val in q.first_half {
@@ -63,6 +62,9 @@ fn main() {
 
     send_tx(queue, Arc::clone(&tx));
 
+    // S'assurer de terminer l'envoi avant de compter les réceptions
+    drop(tx); // Cette opération ferme le canal de transmission
+
     let mut total_received: u32 = 0;
     for received in rx {
         println!("Got: {}", received);
@@ -70,7 +72,7 @@ fn main() {
     }
 
     println!("total numbers received: {}", total_received);
-    assert_eq!(total_received, queue_length)
+    assert_eq!(total_received, queue_length);
 }
 
 #[cfg(test)]
