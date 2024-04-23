@@ -7,6 +7,16 @@
 //
 // Execute `rustlings hint vecs2` or use the `hint` watch subcommand for a hint.
 
+/// Cette fonction `vec_loop` prend un vecteur mutable d'entiers 32 bits et multiplie chaque élément par 2.
+/// 
+/// # Arguments
+/// 
+/// * `v` - Un vecteur mutable d'entiers 32 bits.
+/// 
+/// # Retour
+/// 
+/// Un vecteur d'entiers 32 bits où chaque élément est multiplié par 2.
+/// 
 
 fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
     for num in v.iter_mut() {
@@ -14,6 +24,16 @@ fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
     }
     v
 }
+
+/// Cette fonction `vec_map` prend une référence à un vecteur d'entiers 32 bits et retourne un nouveau vecteur où chaque élément est multiplié par 2.
+/// 
+/// # Arguments
+/// 
+/// * `v` - Une référence à un vecteur d'entiers 32 bits.
+/// 
+/// # Retour
+/// 
+/// Un vecteur d'entiers 32 bits où chaque élément est multiplié par 2.
 
 fn vec_map(v: &Vec<i32>) -> Vec<i32> {
     let mut new_vec = Vec::new();
