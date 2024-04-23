@@ -5,17 +5,19 @@
 // Execute `rustlings hint lifetimes3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
+// Définition de la structure `Book` avec des champs `author` et `title`.
 struct Book {
-    author: &str,
-    title: &str,
+    author: String, // L'auteur du livre.
+    title: String,  // Le titre du livre.
 }
 
 fn main() {
+    // Création de chaînes de caractères pour l'auteur et le titre du livre.
     let name = String::from("Jill Smith");
     let title = String::from("Fish Flying");
-    let book = Book { author: &name, title: &title };
+    // Création d'un livre avec les données d'auteur et de titre.
+    let book = Book { author: name, title: title };
 
+    // Affichage du titre et de l'auteur du livre.
     println!("{} by {}", book.title, book.author);
 }
