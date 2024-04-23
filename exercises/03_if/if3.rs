@@ -2,6 +2,16 @@
 //
 // Execute `rustlings hint if3` or use the `hint` watch subcommand for a hint.
 
+/// Cette fonction `animal_habitat` prend un nom d'animal en entrée et retourne l'habitat associé à cet animal.
+/// 
+/// # Arguments
+/// 
+/// * `animal` - Une référence à une chaîne de caractères représentant le nom de l'animal.
+/// 
+/// # Retour
+/// 
+/// La fonction retourne une référence statique (`&'static str`) représentant l'habitat de l'animal.
+
 
 pub fn animal_habitat(animal: &str) -> &'static str {
     let identifier = if animal == "crab" {
