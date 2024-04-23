@@ -10,6 +10,11 @@
 // Execute `rustlings hint using_as` or use the `hint` watch subcommand for a
 // hint.
 
+/// Calcule la moyenne des valeurs dans un tableau de nombres flottants.
+///
+/// Cette fonction prend une tranche de nombres flottants (`f64`) et retourne leur moyenne.
+/// Si le tableau est vide, la fonction retournera zéro, car la division par zéro est évitée
+ 
 fn average(values: &[f64]) -> f64 {
     let total = values.iter().sum::<f64>();
     total / values.len() as f64
@@ -23,7 +28,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    /// Teste la fonction `average` pour s'assurer qu'elle retourne la bonne valeur et le bon type.
     #[test]
     fn returns_proper_type_and_value() {
         assert_eq!(average(&[3.5, 0.3, 13.0, 11.7]), 7.125);
