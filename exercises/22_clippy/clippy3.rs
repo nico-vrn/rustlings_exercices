@@ -3,8 +3,12 @@
 // Here's a couple more easy Clippy fixes, so you can see its utility.
 // No hints.
 
+/// Module principal démontrant diverses opérations de base en Rust.
+/// 
+/// Ce programme montre l'utilisation des options, des tableaux, des vecteurs, et l'échange de valeurs.
 #[allow(unused_variables, unused_assignments)]
 fn main() {
+    // Gestion des options en Rust pour manipuler des valeurs qui peuvent être absentes.
     let my_option: Option<()> = None;
     if my_option.is_none() {
         println!("Option is None");
@@ -20,6 +24,7 @@ fn main() {
     my_empty_vec.clear(); // Use clear() to empty the vector
     println!("This Vec is empty, see? {:?}", my_empty_vec);
 
+    // Démonstration de l'échange de valeurs entre deux variables en utilisant `std::mem::swap`.
     let mut value_a = 45;
     let mut value_b = 66;
     std::mem::swap(&mut value_a, &mut value_b); // Use std::mem::swap for value swapping
