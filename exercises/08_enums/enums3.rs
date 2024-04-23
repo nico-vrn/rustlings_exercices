@@ -5,19 +5,26 @@
 // Execute `rustlings hint enums3` or use the `hint` watch subcommand for a
 // hint.
 
+//! Ce programme définit un enum `Message` représentant différents types de messages pouvant être envoyés, et une structure `State` qui stocke l'état actuel du système. La structure `State` contient des informations sur la couleur, la position, l'état de sortie et le message en cours.
 
+/// Enum représentant différents types de messages pouvant être envoyés.
 enum Message {
+    /// Change la couleur avec les composantes RGB.
     ChangeColor(u8, u8, u8),
+    /// Répète le message fourni.
     Echo(String),
+    /// Déplace l'objet à la position spécifiée.
     Move(Point),
     Quit,
 }
 
+/// Structure représentant un point dans un espace à deux dimensions.
 struct Point {
     x: u8,
     y: u8,
 }
 
+/// Structure contenant l'état actuel du système.
 struct State {
     color: (u8, u8, u8),
     position: Point,
@@ -26,10 +33,11 @@ struct State {
 }
 
 impl State {
+    /// Change la couleur de l'état.
     fn change_color(&mut self, color: (u8, u8, u8)) {
         self.color = color;
     }
-
+    /// Indique que le programme doit quitter.
     fn quit(&mut self) {
         self.quit = true;
     }
@@ -37,11 +45,11 @@ impl State {
     fn echo(&mut self, s: String) {
         self.message = s;
     }
-
+    /// Déplace l'objet à la position spécifiée.
     fn move_position(&mut self, p: Point) {
         self.position = p;
     }
-
+    /// Traite le message donné en mettant à jour l'état en conséquence.    
     fn process(&mut self, message: Message) {
         match message {
             Message::ChangeColor(r, g, b) => self.color = (r, g, b),
