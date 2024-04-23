@@ -15,7 +15,7 @@ fn main() {
 }
 
 fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
-    let vec = vec;
+    let mut vec = vec; // Déclarer vec comme mutable
 
     vec.push(88);
 

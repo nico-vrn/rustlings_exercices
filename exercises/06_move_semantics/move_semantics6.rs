@@ -10,19 +10,20 @@
 fn main() {
     let data = "Rust is great!".to_string();
 
-    get_char(data);
+    let last_char = get_char(data.clone()); 
 
-    string_uppercase(&data);
+    println!("Last character: {}", last_char);
+
+    let data = string_uppercase(&data); 
+    println!("Uppercase string: {}", data);
 }
 
-// Should not take ownership
+// Devrait prendre la propriété
 fn get_char(data: String) -> char {
     data.chars().last().unwrap()
 }
 
-// Should take ownership
-fn string_uppercase(mut data: &String) {
-    data = &data.to_uppercase();
-
-    println!("{}", data);
+// Ne devrait pas prendre la propriété
+fn string_uppercase(data: &String) -> String {
+    data.to_uppercase()
 }
