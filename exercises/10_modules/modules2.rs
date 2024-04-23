@@ -28,6 +28,7 @@ mod delicious_snacks {
     pub const veggie: &'static str = CUCUMBER;
 }
 
+
 fn main() {
     println!(
         "favorite snacks: {} and {}",
