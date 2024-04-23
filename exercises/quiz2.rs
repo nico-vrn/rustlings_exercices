@@ -20,6 +20,13 @@
 //
 // No hints this time!
 
+/// Représentation des commandes possibles à appliquer sur les chaînes de caractères.
+///
+/// Les commandes incluent:
+/// - `Uppercase`: Convertit une chaîne en majuscules.
+/// - `Trim`: Supprime les espaces en début et en fin de chaîne.
+/// - `Append`: Ajoute le mot "bar" à la chaîne un nombre spécifié de fois.
+/// 
 pub enum Command {
     Uppercase,
     Trim,
@@ -28,7 +35,18 @@ pub enum Command {
 
 mod my_module {
     use super::Command;
-
+    /// Transforme un vecteur de tuples contenant des chaînes et des commandes en un vecteur de chaînes transformées.
+    ///
+    /// Cette fonction prend chaque tuple du vecteur d'entrée, applique la commande spécifiée à la chaîne,
+    /// et ajoute le résultat au vecteur de sortie.
+    ///
+    /// # Arguments
+    /// * `input` - Vecteur de tuples `(String, Command)`, où chaque `String` est une chaîne à transformer
+    /// et chaque `Command` est l'opération à appliquer sur cette chaîne.
+    ///
+    /// # Returns
+    /// Retourne un vecteur de `String` contenant les résultats des transformations.
+    ///
     pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
         let mut output: Vec<String> = vec![];
         for (string, command) in input.iter() {
@@ -48,7 +66,7 @@ mod my_module {
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    /// Tests pour vérifier que la fonction `transformer` fonctionne correctement.
     #[test]
     fn it_works() {
         let output = my_module::transformer(vec![

@@ -14,6 +14,18 @@
 // No hints this time ;)
 
 // Put your function here!
+
+/// Calcule le prix total pour une commande de pommes en fonction de la quantité achetée.
+///
+/// Le prix des pommes est déterminé par les règles suivantes :
+/// - Chaque pomme coûte 2 rustbucks.
+/// - Si la quantité achetée dépasse 40 pommes, le prix par pomme tombe à 1 rustbuck.
+/// # Arguments
+/// * `quantity` - Le nombre de pommes achetées, un entier non signé (`u32`).
+///
+/// # Returns
+/// Retourne le coût total de l'achat en rustbucks (`u32`).
+///
 fn calculate_price_of_apples(quantity: u32) -> u32 {
     if quantity > 40 {
         quantity
@@ -23,6 +35,8 @@ fn calculate_price_of_apples(quantity: u32) -> u32 {
 }
 
 // Don't modify this function!
+// Cette fonction de test vérifie la logique de `calculate_price_of_apples` pour
+// s'assurer qu'elle respecte les conditions de prix données.
 #[test]
 fn verify_test() {
     let price1 = calculate_price_of_apples(35);
