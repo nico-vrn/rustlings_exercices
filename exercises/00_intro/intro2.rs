@@ -5,7 +5,7 @@
 // Execute `rustlings hint intro2` or use the `hint` watch subcommand for a
 // hint.
 
-/// This function simply prints "Hello there!" to the console when the program is run.
+/// Cette fonction imprime "Hello there!" dans la console lors de l'exécution du programme.
 fn main() {
     println!("Hello there!");
 }
