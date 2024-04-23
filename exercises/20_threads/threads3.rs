@@ -6,7 +6,7 @@
 // I AM NOT DONE
 
 use std::sync::mpsc;
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
 
@@ -26,31 +26,37 @@ impl Queue {
     }
 }
 
-fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> () {
-    thread::spawn(move || {
+fn send_tx(q: Queue, tx: Arc<Mutex<mpsc::Sender<u32>>>) -> () {
+    let tx_clone = Arc::clone(&tx);
+    let first_half_thread = thread::spawn(move || {
         for val in q.first_half {
             println!("sending {:?}", val);
+            let tx = tx_clone.lock().unwrap();
             tx.send(val).unwrap();
             thread::sleep(Duration::from_secs(1));
         }
     });
 
-    thread::spawn(move || {
+    let second_half_thread = thread::spawn(move || {
         for val in q.second_half {
             println!("sending {:?}", val);
+            let tx = tx.lock().unwrap();
             tx.send(val).unwrap();
             thread::sleep(Duration::from_secs(1));
         }
     });
+
+    first_half_thread.join().unwrap();
+    second_half_thread.join().unwrap();
 }
 
-#[test]
 fn main() {
     let (tx, rx) = mpsc::channel();
+    let tx = Arc::new(Mutex::new(tx));
     let queue = Queue::new();
     let queue_length = queue.length;
 
-    send_tx(queue, tx);
+    send_tx(queue, Arc::clone(&tx));
 
     let mut total_received: u32 = 0;
     for received in rx {
@@ -60,4 +66,14 @@ fn main() {
 
     println!("total numbers received: {}", total_received);
     assert_eq!(total_received, queue_length)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_main() {
+        main();
+    }
 }
