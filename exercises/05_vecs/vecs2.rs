@@ -10,22 +10,18 @@
 // I AM NOT DONE
 
 fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
-    for element in v.iter_mut() {
-        // TODO: Fill this up so that each element in the Vec `v` is
-        // multiplied by 2.
-        ???
+    for num in v.iter_mut() {
+        *num *= 2; // Multiplie chaque élément par 2
     }
-
-    // At this point, `v` should be equal to [4, 8, 12, 16, 20].
     v
 }
 
 fn vec_map(v: &Vec<i32>) -> Vec<i32> {
-    v.iter().map(|element| {
-        // TODO: Do the same thing as above - but instead of mutating the
-        // Vec, you can just return the new number!
-        ???
-    }).collect()
+    let mut new_vec = Vec::new();
+    for num in v.iter() {
+        new_vec.push(num * 2); // Ajoute chaque élément multiplié par 2 au nouveau Vec
+    }
+    new_vec
 }
 
 #[cfg(test)]
