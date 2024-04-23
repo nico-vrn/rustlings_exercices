@@ -9,9 +9,11 @@
 // Execute `rustlings hint errors6` or use the `hint` watch subcommand for a
 // hint.
 
+//! Ce programme définit une fonction `parse_pos_nonzero` qui prend une chaîne de caractères en entrée et tente de la convertir en un entier non nul positif. Si la conversion échoue ou si l'entier est négatif ou nul, des erreurs appropriées sont renvoyées.
+
 use std::num::ParseIntError;
 
-// This is a custom error type that we will be using in `parse_pos_nonzero()`.
+/// Erreur personnalisée pour la conversion de chaînes en entiers non nuls positifs.
 #[derive(PartialEq, Debug)]
 enum ParsePosNonzeroError {
     Creation(CreationError),
@@ -19,25 +21,28 @@ enum ParsePosNonzeroError {
 }
 
 impl ParsePosNonzeroError {
+    /// Crée une instance de l'erreur à partir d'une erreur de création.
     fn from_creation(err: CreationError) -> ParsePosNonzeroError {
         ParsePosNonzeroError::Creation(err)
     }
 
+    /// Crée une instance de l'erreur à partir d'une erreur de conversion en entier.
     fn from_parseint(err: ParseIntError) -> ParsePosNonzeroError {
         ParsePosNonzeroError::ParseInt(err)
     }
 }
 
+/// Fonction pour convertir une chaîne en un entier non nul positif.
 fn parse_pos_nonzero(s: &str) -> Result<PositiveNonzeroInteger, ParsePosNonzeroError> {
     let x: i64 = s.parse().map_err(ParsePosNonzeroError::from_parseint)?;
     PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
 }
 
-// Don't change anything below this line.
-
+/// Structure représentant un entier non nul positif.
 #[derive(PartialEq, Debug)]
 struct PositiveNonzeroInteger(u64);
 
+/// Erreurs possibles lors de la création d'un entier non nul positif.
 #[derive(PartialEq, Debug)]
 enum CreationError {
     Negative,
@@ -45,6 +50,7 @@ enum CreationError {
 }
 
 impl PositiveNonzeroInteger {
+    /// Crée une nouvelle instance d'entier non nul positif.
     fn new(value: i64) -> Result<PositiveNonzeroInteger, CreationError> {
         match value {
             x if x < 0 => Err(CreationError::Negative),
