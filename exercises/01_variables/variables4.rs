@@ -6,8 +6,9 @@
 // I AM NOT DONE
 
 fn main() {
-    let x = 3;
+    let mut x = 3;  // Ajoutez `mut` pour rendre x mutable
     println!("Number {}", x);
-    x = 5; // don't change this line
+    x = 5;  // Maintenant, cette ligne est valide car x est mutable
     println!("Number {}", x);
 }
+
