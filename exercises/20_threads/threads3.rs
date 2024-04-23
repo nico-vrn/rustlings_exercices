@@ -9,6 +9,10 @@ use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
 
+/// Structure représentant une file d'attente divisée en deux moitiés.
+/// 
+/// Cette structure stocke les éléments dans deux vecteurs distincts pour démontrer
+/// le traitement parallèle des données en utilisant des threads.
 struct Queue {
     length: u32,
     first_half: Vec<u32>,
@@ -25,6 +29,7 @@ impl Queue {
     }
 }
 
+/// Envoie les éléments de la `Queue` dans un canal en utilisant deux threads.
 fn send_tx(q: Queue, tx: Arc<Mutex<mpsc::Sender<u32>>>) -> () {
     let tx_clone = Arc::clone(&tx);
     let first_half_thread = thread::spawn(move || {
@@ -49,6 +54,7 @@ fn send_tx(q: Queue, tx: Arc<Mutex<mpsc::Sender<u32>>>) -> () {
     second_half_thread.join().unwrap();
 }
 
+/// Point d'entrée principal pour démontrer l'envoi parallèle des éléments de `Queue`.
 fn main() {
     let (tx, rx) = mpsc::channel();
     let tx = Arc::new(Mutex::new(tx));
@@ -70,7 +76,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    /// Test pour vérifier le fonctionnement correct du programme principal.
     #[test]
     fn test_main() {
         main();
