@@ -10,6 +10,8 @@ fn main() {
     println!("The square of 3 is {}", answer);
 }
 
+// Définition de la fonction square avec un type de retour i32
 fn square(num: i32) -> i32 {
-    num * num;
+    num * num 
 }
+

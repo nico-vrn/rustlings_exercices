@@ -6,7 +6,7 @@
 // I AM NOT DONE
 
 fn main() {
-    call_me();
+    call_me(3); // Fournir un argument à la fonction call_me
 }
 
 fn call_me(num: u32) {
@@ -14,3 +14,4 @@ fn call_me(num: u32) {
         println!("Ring! Call number {}", i + 1);
     }
 }
+
