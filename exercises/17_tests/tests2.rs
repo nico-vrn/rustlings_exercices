@@ -6,12 +6,12 @@
 // Execute `rustlings hint tests2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 #[cfg(test)]
 mod tests {
     #[test]
     fn you_can_assert_eq() {
-        assert_eq!();
+        let expected = 42; // Définissez la valeur attendue ici
+        let actual = 42; // Définissez la valeur actuelle ici
+        assert_eq!(expected, actual);
     }
 }
