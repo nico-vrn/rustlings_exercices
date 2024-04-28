@@ -13,12 +13,12 @@
 /// La fonction retourne une référence statique (`&'static str`) représentant l'habitat de l'animal.
 
 
-pub fn animal_habitat(animal: &str) -> &'static str {
+pub fn animal_habitat(animal: &str) -> &'static str { // Prend une référence à une chaîne de caractères
     let identifier = if animal == "crab" {
         1
-    } else if animal == "gopher" {
+    } else if animal == "gopher" { // Si l'animal est un gopher
         2
-    } else if animal == "snake" {
+    } else if animal == "snake" {   // Si l'animal est un serpent
         3
     } else {
         0

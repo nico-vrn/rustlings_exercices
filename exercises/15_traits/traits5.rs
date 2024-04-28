@@ -32,7 +32,7 @@ struct SomeStruct {}
 /// Une autre structure vide.
 struct OtherStruct {}
 
-impl SomeTrait for SomeStruct {}
+impl SomeTrait for SomeStruct {} // Implémente SomeTrait pour SomeStruct
 impl OtherTrait for SomeStruct {}
 impl SomeTrait for OtherStruct {}
 impl OtherTrait for OtherStruct {}

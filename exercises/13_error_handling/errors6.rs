@@ -44,7 +44,7 @@ struct PositiveNonzeroInteger(u64);
 
 /// Erreurs possibles lors de la création d'un entier non nul positif.
 #[derive(PartialEq, Debug)]
-enum CreationError {
+enum CreationError { 
     Negative,
     Zero,
 }
@@ -53,9 +53,9 @@ impl PositiveNonzeroInteger {
     /// Crée une nouvelle instance d'entier non nul positif.
     fn new(value: i64) -> Result<PositiveNonzeroInteger, CreationError> {
         match value {
-            x if x < 0 => Err(CreationError::Negative),
-            x if x == 0 => Err(CreationError::Zero),
-            x => Ok(PositiveNonzeroInteger(x as u64)),
+            x if x < 0 => Err(CreationError::Negative), // Si l'entier est négatif
+            x if x == 0 => Err(CreationError::Zero), // Si l'entier est nul
+            x => Ok(PositiveNonzeroInteger(x as u64)), // Sinon, crée un nouvel entier non nul positif
         }
     }
 }

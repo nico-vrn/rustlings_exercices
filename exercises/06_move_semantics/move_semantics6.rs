@@ -17,22 +17,22 @@
 //!
 
 fn main() {
-    let data = "Rust is great!".to_string();
+    let data = "Rust is great!".to_string(); // Crée une chaîne de caractères
 
     let last_char = get_char(data.clone()); 
 
-    println!("Last character: {}", last_char);
+    println!("Last character: {}", last_char); // Affiche le dernier caractère de la chaîne
 
     let data = string_uppercase(&data); 
-    println!("Uppercase string: {}", data);
+    println!("Uppercase string: {}", data); // Affiche la chaîne en majuscules
 }
 
 // Devrait prendre la propriété
-fn get_char(data: String) -> char {
+fn get_char(data: String) -> char { // Prend une chaîne de caractères en propriété
     data.chars().last().unwrap()
 }
 
 // Ne devrait pas prendre la propriété
-fn string_uppercase(data: &String) -> String {
+fn string_uppercase(data: &String) -> String { // Prend une référence à une chaîne de caractères
     data.to_uppercase()
 }

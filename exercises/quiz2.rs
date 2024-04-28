@@ -47,14 +47,14 @@ mod my_module {
     /// # Returns
     /// Retourne un vecteur de `String` contenant les résultats des transformations.
     ///
-    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> { //Fonction pour transformer les chaînes
         let mut output: Vec<String> = vec![];
-        for (string, command) in input.iter() {
-            match command {
-                Command::Uppercase => output.push(string.to_uppercase()),
-                Command::Trim => output.push(string.trim().to_string()),
-                Command::Append(times) => {
-                    let appended_string = format!("{}{}", string, "bar".repeat(*times));
+        for (string, command) in input.iter() { //Pour chaque tuple dans le vecteur d'entrée
+            match command { //Selon la commande
+                Command::Uppercase => output.push(string.to_uppercase()), //Convertit la chaîne en majuscules
+                Command::Trim => output.push(string.trim().to_string()), //Supprime les espaces en début et en fin de chaîne
+                Command::Append(times) => { //Ajoute le mot "bar" à la chaîne un nombre spécifié de fois
+                    let appended_string = format!("{}{}", string, "bar".repeat(*times)); 
                     output.push(appended_string);
                 }
             }

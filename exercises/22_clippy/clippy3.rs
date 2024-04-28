@@ -8,25 +8,25 @@
 /// Ce programme montre l'utilisation des options, des tableaux, des vecteurs, et l'échange de valeurs.
 #[allow(unused_variables, unused_assignments)]
 fn main() {
-    // Gestion des options en Rust pour manipuler des valeurs qui peuvent être absentes.
+    // Gestion des options pour manipuler des valeurs qui peuvent être absentes.
     let my_option: Option<()> = None;
     if my_option.is_none() {
         println!("Option is None");
     }
-
-    let my_arr = &[
+ 
+    let my_arr = &[ 
         -1, -2, -3,
         -4, -5, -6,
     ];
     println!("My array! Here it is: {:?}", my_arr);
 
-    let mut my_empty_vec: Vec<i32> = vec![1, 2, 3, 4, 5];
-    my_empty_vec.clear(); // Use clear() to empty the vector
-    println!("This Vec is empty, see? {:?}", my_empty_vec);
+    let mut my_empty_vec: Vec<i32> = vec![1, 2, 3, 4, 5]; // Crée un vecteur vide
+    my_empty_vec.clear(); // Vide le vecteur
+    println!("This Vec is empty, see? {:?}", my_empty_vec); // Affiche le vecteur vide
 
-    // Démonstration de l'échange de valeurs entre deux variables en utilisant `std::mem::swap`.
+    // Démonstration de l'échange de valeurs entre deux variables 
     let mut value_a = 45;
     let mut value_b = 66;
-    std::mem::swap(&mut value_a, &mut value_b); // Use std::mem::swap for value swapping
+    std::mem::swap(&mut value_a, &mut value_b); // Échange les valeurs des deux variables
     println!("value a: {}; value b: {}", value_a, value_b);
 }

@@ -14,10 +14,10 @@
 use std::rc::Rc;
 
 #[derive(Debug)]
-struct Sun {}
+struct Sun {} // Structure Sun 
 
 #[derive(Debug)]
-enum Planet {
+enum Planet { // Enumération Planet
     Mercury(Rc<Sun>),
     Venus(Rc<Sun>),
     Earth(Rc<Sun>),
@@ -29,8 +29,8 @@ enum Planet {
 }
 
 impl Planet {
-    fn details(&self) {
-        println!("Hi from {:?}!", self)
+    fn details(&self) { 
+        println!("Hi from {:?}!", self) 
     }
 }
 

@@ -15,14 +15,14 @@
 /// Cette fonction prend une tranche de nombres flottants (`f64`) et retourne leur moyenne.
 /// Si le tableau est vide, la fonction retournera zéro, car la division par zéro est évitée
  
-fn average(values: &[f64]) -> f64 {
-    let total = values.iter().sum::<f64>();
+fn average(values: &[f64]) -> f64 { //Fonction pour calculer la moyenne des valeurs
+    let total = values.iter().sum::<f64>(); //Somme des valeurs
     total / values.len() as f64
 }
 
-fn main() {
-    let values = [3.5, 0.3, 13.0, 11.7];
-    println!("{}", average(&values));
+fn main() { 
+    let values = [3.5, 0.3, 13.0, 11.7]; //Tableau de valeurs
+    println!("{}", average(&values)); //Affiche la moyenne des valeurs
 }
 
 #[cfg(test)]

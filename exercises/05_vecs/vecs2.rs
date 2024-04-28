@@ -18,7 +18,7 @@
 /// Un vecteur d'entiers 32 bits où chaque élément est multiplié par 2.
 /// 
 
-fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
+fn vec_loop(mut v: Vec<i32>) -> Vec<i32> { // Prend un vecteur mutable d'entiers 32 bits
     for num in v.iter_mut() {
         *num *= 2; // Multiplie chaque élément par 2
     }
@@ -35,7 +35,7 @@ fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
 /// 
 /// Un vecteur d'entiers 32 bits où chaque élément est multiplié par 2.
 
-fn vec_map(v: &Vec<i32>) -> Vec<i32> {
+fn vec_map(v: &Vec<i32>) -> Vec<i32> { // Prend une référence à un vecteur d'entiers 32 bits
     let mut new_vec = Vec::new();
     for num in v.iter() {
         new_vec.push(num * 2); // Ajoute chaque élément multiplié par 2 au nouveau Vec
@@ -43,12 +43,12 @@ fn vec_map(v: &Vec<i32>) -> Vec<i32> {
     new_vec
 }
 
-#[cfg(test)]
+#[cfg(test)] 
 mod tests {
     use super::*;
 
     #[test]
-    fn test_vec_loop() {
+    fn test_vec_loop() { // Teste la fonction vec_loop
         let v: Vec<i32> = (1..).filter(|x| x % 2 == 0).take(5).collect();
         let ans = vec_loop(v.clone());
 
@@ -56,7 +56,7 @@ mod tests {
     }
 
     #[test]
-    fn test_vec_map() {
+    fn test_vec_map() { // Teste la fonction vec_map
         let v: Vec<i32> = (1..).filter(|x| x % 2 == 0).take(5).collect();
         let ans = vec_map(&v);
 

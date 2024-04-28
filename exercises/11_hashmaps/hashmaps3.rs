@@ -19,8 +19,7 @@
 
 use std::collections::HashMap;
 
-// Define the Team structure
-struct Team {
+struct Team { // Défini la structure Team
     goals_scored: u8,
     goals_conceded: u8,
 }
@@ -33,22 +32,22 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
     let mut scores: HashMap<String, Team> = HashMap::new();
 
     for r in results.lines() {
-        let v: Vec<&str> = r.split(',').collect();
+        let v: Vec<&str> = r.split(',').collect(); // Sépare la chaîne en fonction des virgules
         let team_1_name = v[0].to_string();
-        let team_1_score: u8 = v[2].parse().unwrap();
+        let team_1_score: u8 = v[2].parse().unwrap(); // Convertit le nombre de buts marqués en u8
         let team_2_name = v[1].to_string();
-        let team_2_score: u8 = v[3].parse().unwrap();
+        let team_2_score: u8 = v[3].parse().unwrap(); // Convertit le nombre de buts encaissés en u8
 
-        let team_1 = scores.entry(team_1_name.clone()).or_insert(Team { goals_scored: 0, goals_conceded: 0 });
-        team_1.goals_scored += team_1_score;
+        let team_1 = scores.entry(team_1_name.clone()).or_insert(Team { goals_scored: 0, goals_conceded: 0 }); // Ajoute l'équipe 1 à la table des scores
+        team_1.goals_scored += team_1_score; // Ajoute le nombre de buts marqués
         team_1.goals_conceded += team_2_score;
 
-        let team_2 = scores.entry(team_2_name).or_insert(Team { goals_scored: 0, goals_conceded: 0 });
-        team_2.goals_scored += team_2_score;
+        let team_2 = scores.entry(team_2_name).or_insert(Team { goals_scored: 0, goals_conceded: 0 }); // Ajoute l'équipe 2 à la table des scores
+        team_2.goals_scored += team_2_score; // Ajoute le nombre de buts encaissés
         team_2.goals_conceded += team_1_score;
     }
 
-    scores
+    scores // Retourne la table des scores
 }
 
 #[cfg(test)]

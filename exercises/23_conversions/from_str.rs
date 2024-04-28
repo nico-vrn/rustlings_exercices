@@ -13,7 +13,7 @@ use std::num::ParseIntError;
 use std::str::FromStr;
 
 #[derive(Debug, PartialEq)]
-struct Person {
+struct Person { //Structure de personnes sur nom et âge
     name: String,
     age: usize,
 }
@@ -43,26 +43,26 @@ enum ParsePersonError {
 //    should be returned
 // If everything goes well, then return a Result of a Person object
 
-impl FromStr for Person {
-    type Err = ParsePersonError;
+impl FromStr for Person {  //Implémentation de FromStr pour la structure Person
+    type Err = ParsePersonError; 
     
-    fn from_str(s: &str) -> Result<Person, Self::Err> {
+    fn from_str(s: &str) -> Result<Person, Self::Err> { //Fonction from_str pour la structure Person
         if s.is_empty() {
             return Err(ParsePersonError::Empty);
         }
         
-        let parts: Vec<&str> = s.split(',').collect();
+        let parts: Vec<&str> = s.split(',').collect(); //Séparation de la chaîne de caractères par les virgules
         if parts.len() != 2 {
             return Err(ParsePersonError::BadLen);
         }
         
         let name = parts[0];
-        if name.is_empty() {
-            return Err(ParsePersonError::NoName);
+        if name.is_empty() { //Si le nom est vide
+            return Err(ParsePersonError::NoName); //Retourne une erreur
         }
         
-        match parts[1].parse::<usize>() {
-            Ok(age) => Ok(Person { name: String::from(name), age }),
+        match parts[1].parse::<usize>() { //Essaie de convertir la deuxième partie en usize
+            Ok(age) => Ok(Person { name: String::from(name), age }), //Si réussi, retourne une Person
             Err(err) => Err(ParsePersonError::ParseInt(err)),
         }
     }

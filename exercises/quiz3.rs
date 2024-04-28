@@ -40,7 +40,7 @@
         }
     }
 
-    pub struct ReportCard<T: Grade> {
+    pub struct ReportCard<T: Grade> { //Structure de bulletin de notes
         pub grade: T,
         pub student_name: String,
         pub student_age: u8,
@@ -52,8 +52,8 @@
 /// le trait `Grade`. Cette conception permet au bulletin de prendre en charge tout type de note
 /// pouvant être représenté sous forme de chaîne à des fins de rapport.
 ///
-    impl<T: Grade> ReportCard<T> {
-        pub fn print(&self) -> String {
+    impl<T: Grade> ReportCard<T> { //Implémentation de ReportCard
+        pub fn print(&self) -> String { //Fonction pour imprimer le bulletin de notes
             format!(
                 "{} ({}) - achieved a grade of {}",
                 &self.student_name,

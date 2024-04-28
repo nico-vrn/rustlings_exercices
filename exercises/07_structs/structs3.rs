@@ -9,8 +9,8 @@
 
 //! Ce programme définit une structure `Package` représentant un colis à expédier. Il fournit des méthodes pour créer un nouveau colis, vérifier s'il s'agit d'un envoi international, et calculer les frais de transport en fonction du poids du colis et du tarif par gramme.
 
-#[derive(Debug)]
-struct Package {
+#[derive(Debug)] 
+struct Package { // Structure Package
     sender_country: String,
     recipient_country: String,
     weight_in_grams: u32,
@@ -18,11 +18,11 @@ struct Package {
 
 impl Package {
     /// Crée un nouveau colis avec les informations fournies.
-    fn new(sender_country: String, recipient_country: String, weight_in_grams: u32) -> Package {
+    fn new(sender_country: String, recipient_country: String, weight_in_grams: u32) -> Package { // Crée un nouveau colis avec les informations fournies
         if weight_in_grams < 10 {
-            panic!("Can not ship a package with weight below 10 grams.")
+            panic!("Can not ship a package with weight below 10 grams.") // On ne peut pas expédier un colis pesant moins de 10 grammes
         } else {
-            Package {
+            Package { // Crée un nouveau colis
                 sender_country,
                 recipient_country,
                 weight_in_grams,
@@ -39,8 +39,8 @@ impl Package {
     }
 }
 
-#[cfg(test)]
-mod tests {
+#[cfg(test)] 
+mod tests { // Tests
     use super::*;
 
     #[test]

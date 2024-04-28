@@ -12,12 +12,12 @@
 /// - `my_macro!(expression)` affiche un message formaté avec la valeur de l'expression.
 
 #[rustfmt::skip]
-macro_rules! my_macro {
-    () => {
-        println!("Check out my macro!");
+macro_rules! my_macro { // Définit la macro my_macro
+    () => { // Si la macro est appelée sans paramètre
+        println!("Check out my macro!"); // Affiche un message standard
     };
-    ($val:expr) => {
-        println!("Look at this other macro: {}", $val);
+    ($val:expr) => { // Si la macro est appelée avec un paramètre
+        println!("Look at this other macro: {}", $val); // Affiche un message formaté avec la valeur de l'expression
     };
 }
 
